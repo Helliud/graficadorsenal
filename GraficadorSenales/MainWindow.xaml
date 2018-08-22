@@ -25,7 +25,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="237,199,0,0" TextWrapping="Wrap" Text="Frecuencia de muestreo" VerticalAlignment="Top" FontSize="18"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="237,233,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" TextChanged="TextBox_TextChanged_1"/>
         <Button Content="Graficar" HorizontalAlignment="Left" Margin="436,47,0,0" VerticalAlignment="Top" Width="173" Height="44"/>
-        <ScrollViewer HorizontalAlignment="Left" Height="141" Margin="0,278,-0.4,0" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
-
+        <ScrollViewer HorizontalAlignment="Left" Height="141" Margin="0,278,-0.4,0" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden">
+            <Polyline Stroke="Black" StrokeThickness="2" Name="plnGrafica"></Polyline> </ScrollViewer>
+        
+        
     </Grid>
 </Window>

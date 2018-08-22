@@ -23,6 +23,18 @@ namespace GraficadorSenales
         public MainWindow()
         {
             InitializeComponent();
+
+            plnGrafica.Points.Add(new Point(0, 6));
+            plnGrafica.Points.Add(new Point(100, 50));
+            plnGrafica.Points.Add(new Point(150, 46));
+            plnGrafica.Points.Add(new Point(155, 70));
+            plnGrafica.Points.Add(new Point(300, 100));
+            plnGrafica.Points.Add(new Point(433, 68));
+            plnGrafica.Points.Add(new Point(533, 100));
+            plnGrafica.Points.Add(new Point(633, 50));
+            plnGrafica.Points.Add(new Point(763, 68));
+            plnGrafica.Points.Add(new Point(1003, 68));
+
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
