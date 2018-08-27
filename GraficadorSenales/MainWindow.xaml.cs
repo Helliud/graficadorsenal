@@ -54,7 +54,23 @@ namespace GraficadorSenales
 
             for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo) 
             {
-                plnGrafica.Points.Add(new Point(i * scrContenedor.Width, (senal.evaluar(i) * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+                double valorMuestral = senal.evaluar(i);
+
+                if(Math.Abs(valorMuestral) > senal.AmplitudMaxima)
+                {
+                    senal.AmplitudMaxima = Math.Abs(valorMuestral);
+
+                }
+
+                senal.Muestras.Add(new Muestra(i, valorMuestral)); 
+
+            }
+
+            //Recorrer una coleccion o arreglo
+            foreach(Muestra muestra in senal.Muestras)
+            {
+                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+
 
             }
 
