@@ -56,8 +56,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Muestra.cs" />
+    <Compile Include="Parabolica.cs" />
     <Compile Include="Rampa.cs" />
     <Compile Include="SenalSenoidal.cs" />
+    <Compile Include="Signo.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

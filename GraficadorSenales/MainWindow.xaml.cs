@@ -71,10 +71,11 @@ namespace GraficadorSenales
             //Recorrer una coleccion o arreglo
             foreach(Muestra muestra in senal.Muestras)
             {
-                plnGrafica.Points.Add(new Point(muestra.X* scrContenedor.Width, (muestra.Y* ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
-
-
+                plnGrafica.Points.Add(new Point(muestra.X* scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
             }
+
+            lblAmplitudMaxY.Text = senal.Amplitud.ToString();
+            lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString();
         }
 
         /*-------------------------------------*/
@@ -112,6 +113,69 @@ namespace GraficadorSenales
 
 
             }
+        }
+
+        private void btnGraficasSigno_click(object sender, RoutedEventArgs e)
+        {
+            double tiempoInicial = double.Parse(txtTiempoInicial.Text); //TODAS LAS SENALES OCUPAN ESTAS 3 VARIABLES
+            double tiempoFinal = double.Parse(txtTiempoFinal.Text);
+            double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
+
+            Signo senalSigno = new Signo();
+
+
+            double periodoMuestreo = 1 / frecuenciaMuestreo;
+            plnGrafica.Points.Clear();
+
+
+            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
+            {
+                double valorMuestral = senalSigno.evaluar(i);
+
+
+                senalSigno.Muestras.Add(new Muestra(i, valorMuestral));
+
+            }
+
+            //Recorrer una coleccion o arreglo
+            foreach (Muestra muestra in senalSigno.Muestras)
+            {
+                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+
+
+            }
+        }
+
+        private void btnParabolico_Click(object sender, RoutedEventArgs e)
+        {
+            double tiempoInicial = double.Parse(txtTiempoInicial.Text); //TODAS LAS SENALES OCUPAN ESTAS 3 VARIABLES
+            double tiempoFinal = double.Parse(txtTiempoFinal.Text);
+            double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
+
+            Parabolica senalParabolica = new Parabolica();
+
+
+            double periodoMuestreo = 1 / frecuenciaMuestreo;
+            plnGrafica.Points.Clear();
+
+
+            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
+            {
+                double valorMuestral = senalParabolica.evaluar(i);
+
+
+                senalParabolica.Muestras.Add(new Muestra(i, valorMuestral));
+
+            }
+
+            //Recorrer una coleccion o arreglo
+            foreach (Muestra muestra in senalParabolica.Muestras)
+            {
+                plnGrafica.Points.Add(new Point(muestra.X * scrContenedor.Width, (muestra.Y * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+
+
+            }
+
         }
     }
 }
