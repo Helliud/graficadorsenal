@@ -29,17 +29,23 @@
         <TextBlock HorizontalAlignment="Left" Margin="419,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="18" Height="47" Width="114"><Run Text="Frecuencia de "/><LineBreak/><Run Text="muestreo"/></TextBlock>
         <TextBox x:Name="txtMuestreo" HorizontalAlignment="Left" Height="23" Margin="419,139,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" />
         <Button Content="Senoidal" HorizontalAlignment="Left" Margin="603,26,0,0" VerticalAlignment="Top" Width="67" Height="44" Click="Button_Click" />
+        
         <ScrollViewer x:Name="scrContenedor" HorizontalAlignment="Left" Height="229" Margin="40,5.2,-0.4,0" VerticalAlignment="Top" Width="754" Grid.ColumnSpan="3" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Grid.Row="1">
-            <Polyline Stroke="Black" StrokeThickness="2" Name="plnGrafica"></Polyline>
+            <Grid>
+                <Polyline Stroke="Black" StrokeThickness="2" Name="plnGrafica"></Polyline>
+                <Polyline Stroke="LimeGreen" StrokeThickness="0.5" Name="plnEjeX"></Polyline>
+                <Polyline Stroke="Lime" StrokeThickness="0.5" Name="plnEjeY"></Polyline>
+            </Grid>
         </ScrollViewer>
+        
         <Button x:Name="btnGraficasRampa" Content="Rampa" HorizontalAlignment="Left" Margin="603,78,0,0" VerticalAlignment="Top" Width="67" Height="44" Click="btnGraficasRampa_click" />
         <Button x:Name="graficaSigno" Content="Signo" HorizontalAlignment="Left" Margin="685,78,0,0" VerticalAlignment="Top" Width="70" Height="44" Click="btnGraficasSigno_click" Grid.ColumnSpan="2"/>
         <Button x:Name="btnParabolico" Grid.ColumnSpan="2" Content="Parabolico" HorizontalAlignment="Left" Margin="685,26,0,0" VerticalAlignment="Top" Width="70" Height="44" Click="btnParabolico_Click"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="229" Margin="0,5.2,0,0" Stroke="Black" VerticalAlignment="Top" Width="40" Grid.Row="1"/>
         <TextBlock x:Name="lblAmplitudMaxY" HorizontalAlignment="Left" Margin="10,25.2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock x:Name="lblAmplitudNegY" HorizontalAlignment="Left" Margin="9,193.2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,113.2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,171,0,0" TextWrapping="Wrap" Text="Y" VerticalAlignment="Top" Grid.RowSpan="2"/>
+        
 
 
     </Grid>

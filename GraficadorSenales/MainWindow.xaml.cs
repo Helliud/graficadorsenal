@@ -71,8 +71,20 @@ namespace GraficadorSenales
             //Recorrer una coleccion o arreglo
             foreach(Muestra muestra in senal.Muestras)
             {
-                plnGrafica.Points.Add(new Point(muestra.X* scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+                plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
             }
+
+            plnEjeX.Points.Clear();
+            //Punto del principio
+            plnEjeX.Points.Add(new Point(0,  (scrContenedor.Height / 2)));
+            //Punto del final
+            plnEjeX.Points.Add(new Point(tiempoFinal + scrContenedor.Width , scrContenedor.Height/2));
+
+            plnEjeY.Points.Clear();
+            //Punto del principio
+            plnEjeY.Points.Add(new Point((0 - tiempoInicial) * scrContenedor.Width, (senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
+            //Punto del final
+            plnEjeY.Points.Add(new Point((0 - tiempoInicial) * scrContenedor.Width, (-senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
 
             lblAmplitudMaxY.Text = senal.Amplitud.ToString();
             lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString();
