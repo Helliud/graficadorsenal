@@ -6,15 +6,13 @@ using System.Threading.Tasks;
 
 namespace GraficadorSenales
 {
-    class SenalSenoidal
+   class SenalSenoidal : Senal
     {
         public double Amplitud { get; set; }
         public double Fase { get; set; }
         public double Frecuencia { get; set; }
 
-        public List<Muestra> Muestras { get; set; }
-        public double AmplitudMaxima { get; set; }
-
+        
         public SenalSenoidal()
         {
             Amplitud = 1.0;
@@ -34,7 +32,8 @@ namespace GraficadorSenales
             AmplitudMaxima = 0.0;
         }
 
-        public double evaluar(double tiempo)
+        //Override va a buscar si el padre tiene la misma variable, y si existe, el padre es la clase Senal
+        override public double evaluar(double tiempo)
         {
             double resultado;
             resultado = Amplitud * Math.Sin(((2 * Math.PI * Frecuencia) * tiempo) + Fase);

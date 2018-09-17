@@ -47,32 +47,46 @@ namespace GraficadorSenales
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
             double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
 
-            SenalSenoidal senal = new SenalSenoidal(amplitud, fase, frecuencia);
+            Senal senal;
 
+            //Declarar las opciones para senalar en el vombo
+            switch (cbTipoSenal.SelectedIndex)
+            {
+                
+                case 0: senal = new SenalSenoidal(amplitud, fase, frecuencia); break;
+                case 1: senal = new Rampa(); break;
+                case 2: senal = new Signo(); break;
+                case 3: senal = new Parabolica(); break;
+                default:
+                    senal = null;
+                    break;
+            }
 
-            double periodoMuestreo = 1 / frecuenciaMuestreo;
+            senal.TiempoInicial = tiempoInicial;
+            senal.TiempoFinal = tiempoFinal;
+            senal.FrecuenciaMuestreo = frecuenciaMuestreo;
+
+            senal.construirSenalDigital();
+                
             plnGrafica.Points.Clear();
 
 
-            for (double i = tiempoInicial; i <= tiempoFinal; i += periodoMuestreo)
+            if (senal != null)
             {
-                double valorMuestral = senal.evaluar(i);
 
-                if (Math.Abs(valorMuestral) > senal.AmplitudMaxima)
+
+                //Recorrer una coleccion o arreglo
+                foreach (Muestra muestra in senal.Muestras)
                 {
-                    senal.AmplitudMaxima = Math.Abs(valorMuestral);
-
+                    plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
                 }
 
-                senal.Muestras.Add(new Muestra(i, valorMuestral));
+                lblAmplitudMaxY.Text = senal.AmplitudMaxima.ToString();
+                lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString();
 
             }
 
-            //Recorrer una coleccion o arreglo
-            foreach(Muestra muestra in senal.Muestras)
-            {
-                plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
-            }
+
 
             plnEjeX.Points.Clear();
             //Punto del principio
@@ -86,9 +100,9 @@ namespace GraficadorSenales
             //Punto del final
             plnEjeY.Points.Add(new Point((0 - tiempoInicial) * scrContenedor.Width, (-senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
 
-            lblAmplitudMaxY.Text = senal.Amplitud.ToString();
-            lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString();
+            
         }
+        
 
         /*-------------------------------------*/
         private void btnGraficasRampa_click(object sender, RoutedEventArgs e)

@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace GraficadorSenales
 {
-    class Signo
+    class Signo : Senal
     {
 
-        public List<Muestra> Muestras { get; set; }
-        public double AmplitudMaxima { get; set; }
 
         public Signo()
         {
@@ -19,7 +17,7 @@ namespace GraficadorSenales
 
         }
 
-        public double evaluar(double tiempo)
+        override public double evaluar(double tiempo)
         {
             double resultado;
 
