@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,12 +57,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConfiguracionSenoidal.xaml.cs">
+      <DependentUpon>ConfiguracionSenoidal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Muestra.cs" />
     <Compile Include="Parabolica.cs" />
     <Compile Include="Rampa.cs" />
     <Compile Include="Senal.cs" />
     <Compile Include="SenalSenoidal.cs" />
     <Compile Include="Signo.cs" />
+    <Page Include="ConfiguracionSenoidal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

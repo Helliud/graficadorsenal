@@ -24,7 +24,7 @@ namespace GraficadorSenales
         {
             InitializeComponent();
 
-
+            
 
         }
 
@@ -40,9 +40,7 @@ namespace GraficadorSenales
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            double amplitud = double.Parse(txtAmplitud.Text);
-            double fase = double.Parse(txtFase.Text);
-            double frecuencia = double.Parse(txtFrecuencia.Text);
+           
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
             double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
@@ -53,7 +51,14 @@ namespace GraficadorSenales
             switch (cbTipoSenal.SelectedIndex)
             {
                 
-                case 0: senal = new SenalSenoidal(amplitud, fase, frecuencia); break;
+                case 0:
+                   double amplitud = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtAmplitud.Text);
+                    double fase = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtFase.Text);
+                    double frecuencia = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtFrecuencia.Text);
+
+                    senal = new SenalSenoidal(5, 0, 8);
+                    break;
+
                 case 1: senal = new Rampa(); break;
                 case 2: senal = new Signo(); break;
                 case 3: senal = new Parabolica(); break;
@@ -202,6 +207,27 @@ namespace GraficadorSenales
 
             }
 
+        }
+
+        private void cbTipoSenal_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            stackPanelConfiguracion.Children.Clear();
+            switch (cbTipoSenal.SelectedIndex)
+            {
+                case 0: //Senoidal
+                 
+                    stackPanelConfiguracion.Children.Add(new ConfiguracionSenoidal());
+                    break;
+
+                case 1: // Rampa
+                    //Nomas se limpia, pero arriba ya se hizo
+                    break;
+
+                default:
+                    break;
+
+            }
         }
     }
 }
