@@ -62,6 +62,11 @@ namespace GraficadorSenales
                 case 1: senal = new Rampa(); break;
                 case 2: senal = new Signo(); break;
                 case 3: senal = new Parabolica(); break;
+                case 4:  
+                        double alfa = double.Parse(((ConfiguracionExponencial)(stackPanelConfiguracion.Children[0])).txtAlfa.Text);
+
+                    senal = new SenalExponencial(alfa);
+                    break;
                 default:
                     senal = null;
                     break;
@@ -224,6 +229,9 @@ namespace GraficadorSenales
                     //Nomas se limpia, pero arriba ya se hizo
                     break;
 
+                case 4:
+                    stackPanelConfiguracion.Children.Add(new ConfiguracionExponencial());
+                    break;
                 default:
                     break;
 
