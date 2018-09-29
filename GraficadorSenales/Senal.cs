@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GraficadorSenales
 {
-   abstract class Senal 
+    abstract class Senal
     {
         public List<Muestra> Muestras { get; set; }
         public double AmplitudMaxima { get; set; }
@@ -14,7 +14,9 @@ namespace GraficadorSenales
         public double TiempoFinal { get; set; }
         public double FrecuenciaMuestreo { get; set; }
 
+
         public abstract double evaluar(double tiempo);
+
         public void construirSenalDigital()
         {
             double periodoMuestreo = 1 / FrecuenciaMuestreo;
@@ -23,17 +25,47 @@ namespace GraficadorSenales
             {
                 double valorMuestral = evaluar(i);
 
-               Muestras.Add(new Muestra(i, valorMuestral));
+                Muestras.Add(new Muestra(i, valorMuestral));
                 if (Math.Abs(valorMuestral) > AmplitudMaxima)
                 {
                     AmplitudMaxima = Math.Abs(valorMuestral);
 
                 }
 
-               
+
 
             }
 
+
+
+        }
+        public void escalar(double factor)
+        {
+            foreach (Muestra muestra in Muestras)
+            {
+                muestra.Y = muestra.Y * factor;
+            }
+        }
+
+        public void desplazamientoY(double factor)
+        {
+            foreach (Muestra muestra in Muestras)
+            {
+                muestra.Y = muestra.Y + factor;
+            }
+        }
+
+        public void actualizarAmplitudMaxima()
+        {
+            AmplitudMaxima = 0;
+            foreach (Muestra muestra in Muestras)
+            {
+                if (Math.Abs(muestra.Y) > AmplitudMaxima)
+                {
+                    AmplitudMaxima = Math.Abs(muestra.Y);
+                }
+
+            }
         }
     }
 }

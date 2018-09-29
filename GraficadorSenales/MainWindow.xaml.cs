@@ -24,7 +24,7 @@ namespace GraficadorSenales
         {
             InitializeComponent();
 
-            
+
 
         }
 
@@ -40,7 +40,7 @@ namespace GraficadorSenales
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-           
+
             double tiempoInicial = double.Parse(txtTiempoInicial.Text);
             double tiempoFinal = double.Parse(txtTiempoFinal.Text);
             double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
@@ -50,20 +50,20 @@ namespace GraficadorSenales
             //Declarar las opciones para senalar en el vombo
             switch (cbTipoSenal.SelectedIndex)
             {
-                
+
                 case 0:
-                   double amplitud = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtAmplitud.Text);
+                    double amplitud = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtAmplitud.Text);
                     double fase = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtFase.Text);
                     double frecuencia = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion.Children[0])).txtFrecuencia.Text);
 
-                    senal = new SenalSenoidal(5, 0, 8);
+                    senal = new SenalSenoidal(amplitud, fase, frecuencia);
                     break;
 
                 case 1: senal = new Rampa(); break;
                 case 2: senal = new Signo(); break;
                 case 3: senal = new Parabolica(); break;
-                case 4:  
-                        double alfa = double.Parse(((ConfiguracionExponencial)(stackPanelConfiguracion.Children[0])).txtAlfa.Text);
+                case 4:
+                    double alfa = double.Parse(((ConfiguracionExponencial)(stackPanelConfiguracion.Children[0])).txtAlfa.Text);
 
                     senal = new SenalExponencial(alfa);
                     break;
@@ -77,7 +77,16 @@ namespace GraficadorSenales
             senal.FrecuenciaMuestreo = frecuenciaMuestreo;
 
             senal.construirSenalDigital();
-                
+
+            //Escalar
+            double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
+            senal.escalar(factorEscala);
+
+            double factorDesplazamientoY = double.Parse(txtDesplazamientoY.Text);
+            senal.desplazamientoY(factorDesplazamientoY);
+
+            senal.actualizarAmplitudMaxima();
+
             plnGrafica.Points.Clear();
 
 
@@ -100,9 +109,9 @@ namespace GraficadorSenales
 
             plnEjeX.Points.Clear();
             //Punto del principio
-            plnEjeX.Points.Add(new Point(0,  (scrContenedor.Height / 2)));
+            plnEjeX.Points.Add(new Point(0, (scrContenedor.Height / 2)));
             //Punto del final
-            plnEjeX.Points.Add(new Point(tiempoFinal + scrContenedor.Width , scrContenedor.Height/2));
+            plnEjeX.Points.Add(new Point(tiempoFinal + scrContenedor.Width, scrContenedor.Height / 2));
 
             plnEjeY.Points.Clear();
             //Punto del principio
@@ -110,9 +119,9 @@ namespace GraficadorSenales
             //Punto del final
             plnEjeY.Points.Add(new Point((0 - tiempoInicial) * scrContenedor.Width, (-senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
 
-            
+
         }
-        
+
 
         /*-------------------------------------*/
         private void btnGraficasRampa_click(object sender, RoutedEventArgs e)
@@ -221,7 +230,7 @@ namespace GraficadorSenales
             switch (cbTipoSenal.SelectedIndex)
             {
                 case 0: //Senoidal
-                 
+
                     stackPanelConfiguracion.Children.Add(new ConfiguracionSenoidal());
                     break;
 
@@ -237,8 +246,37 @@ namespace GraficadorSenales
 
             }
         }
+
+        private void chbDesplazamientoY_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chbDesplazamientoY.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtDesplazamientoY.IsEnabled = true;
+            }
+
+            else
+            {
+                txtDesplazamientoY.IsEnabled = false;
+            }
+        }
+
+        private void chbEscala_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chbEscala.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtFactorEscalaAmplitud.IsEnabled = true;
+            }
+
+            else
+            {
+                txtFactorEscalaAmplitud.IsEnabled = false;
+            }
+        }
+
+
     }
 }
 
-   
 
