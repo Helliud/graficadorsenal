@@ -35,7 +35,7 @@
         <TextBlock x:Name="lblAmplitudNegY" HorizontalAlignment="Left" Margin="9,193.2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,113.2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Row="1"/>
         <!-- Se agrego la lista de las senales que se quiere seleccionar -->
-        <StackPanel x:Name="stackPanelConfiguracion" HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="420" Margin="9,13,0,0"/>
+        <StackPanel x:Name="stackPanelConfiguracion" HorizontalAlignment="Left" Height="115" VerticalAlignment="Top" Width="420" Margin="9,13,0,0"/>
 
         <ComboBox Name="cbTipoSenal" HorizontalAlignment="Left" Margin="603,119,0,0" VerticalAlignment="Top" Width="173" SelectedIndex="0" Grid.ColumnSpan="2" SelectionChanged="cbTipoSenal_SelectionChanged">
             <ComboBoxItem>Senal Senoidal</ComboBoxItem>
@@ -52,9 +52,12 @@
         <TextBox x:Name="txtFactorEscalaAmplitud" HorizontalAlignment="Left" Height="23" Margin="434,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="1"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="434,133,0,0" TextWrapping="Wrap" Text="Escala" VerticalAlignment="Top"/>
         <TextBox x:Name="txtDesplazamientoY" HorizontalAlignment="Left" Height="23" Margin="274,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Text="0"/>
-        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="274,133,0,0" TextWrapping="Wrap" Text="Despazamiento Y" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="274,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Despazamiento Y"/></TextBlock>
         <CheckBox x:Name="chbDesplazamientoY" Content="" HorizontalAlignment="Left" Margin="399,158,0,0" VerticalAlignment="Top" Click="chbDesplazamientoY_Checked"/>
         <CheckBox x:Name="chbEscala" Content="" HorizontalAlignment="Left" Margin="559,158,0,0" VerticalAlignment="Top" Click="chbEscala_Checked"/>
+        <TextBlock x:Name="textBlock2" HorizontalAlignment="Left" Margin="92,133,0,0" TextWrapping="Wrap" Text="Umbral" VerticalAlignment="Top" RenderTransformOrigin="0.909,-0.037"/>
+        <TextBox x:Name="txtTruncar" HorizontalAlignment="Left" Height="23" Margin="92,151,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <CheckBox x:Name="chbTruncar" Content="" HorizontalAlignment="Left" Margin="226,158,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.16,-0.382" Checked="chbTruncar_Checked" Click="chbTruncar_Checked"/>
 
 
 

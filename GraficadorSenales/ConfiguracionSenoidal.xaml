@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
              xmlns:local="clr-namespace:GraficadorSenales"
-             mc:Ignorable="d" Width="325.318" Height="173.7">
+             mc:Ignorable="d" Width="300.134" Height="116.231">
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
@@ -16,12 +16,12 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="155*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" Height="24" Width="74" Grid.Column="3" Grid.RowSpan="2"/>
-        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="10,34,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,82,0,0" TextWrapping="Wrap" Text="Fase" VerticalAlignment="Top" FontSize="18" Height="24" Width="42" Grid.Column="3" Grid.RowSpan="2"/>
-        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="23" Margin="10,111,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2" />
-        <TextBlock HorizontalAlignment="Left" Margin="184,4,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top" FontSize="18" Height="24" Width="85" Grid.Column="3" Grid.RowSpan="2"/>
-        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="184,34,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,1,0,0" TextWrapping="Wrap" Text="Amplitud" VerticalAlignment="Top" FontSize="18" Height="24" Width="74" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBox x:Name="txtAmplitud" HorizontalAlignment="Left" Height="23" Margin="0,34,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="0,63,0,0" TextWrapping="Wrap" Text="Fase" VerticalAlignment="Top" FontSize="18" Height="24" Width="42" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBox x:Name="txtFase" HorizontalAlignment="Left" Height="23" Margin="0,92,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Margin="174,5,0,0" TextWrapping="Wrap" Text="Frecuencia" VerticalAlignment="Top" FontSize="18" Height="24" Width="85" Grid.Column="3" Grid.RowSpan="2"/>
+        <TextBox x:Name="txtFrecuencia" HorizontalAlignment="Left" Height="23" Margin="174,34,0,0" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.45,-0.704" Grid.Column="3" Grid.RowSpan="2"/>
 
     </Grid>
 </UserControl>

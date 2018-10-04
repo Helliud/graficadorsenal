@@ -82,8 +82,13 @@ namespace GraficadorSenales
             double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
             senal.escalar(factorEscala);
 
+            //Desplazamiento Y
             double factorDesplazamientoY = double.Parse(txtDesplazamientoY.Text);
             senal.desplazamientoY(factorDesplazamientoY);
+
+            //Truncar
+            double Umbral = double.Parse(txtTruncar.Text);
+            senal.Truncar(Umbral);
 
             senal.actualizarAmplitudMaxima();
 
@@ -247,6 +252,12 @@ namespace GraficadorSenales
             }
         }
 
+
+        private void tbTruncar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         private void chbDesplazamientoY_Checked(object sender, RoutedEventArgs e)
         {
             if (chbDesplazamientoY.IsChecked == true)
@@ -275,7 +286,19 @@ namespace GraficadorSenales
             }
         }
 
+        private void chbTruncar_Checked(object sender, RoutedEventArgs e)
+        {
+            if (chbTruncar.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtTruncar.IsEnabled = true;
+            }
 
+            else
+            {
+                txtTruncar.IsEnabled = false;
+            }
+        }
     }
 }
 
