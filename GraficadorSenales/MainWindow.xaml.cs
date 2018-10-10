@@ -105,8 +105,8 @@ namespace GraficadorSenales
                     plnGrafica.Points.Add(new Point((muestra.X - tiempoInicial) * scrContenedor.Width, (muestra.Y / senal.AmplitudMaxima * ((scrContenedor.Height / 2.0) - 30) * -1) + (scrContenedor.Height / 2)));
                 }
 
-                lblAmplitudMaxY.Text = senal.AmplitudMaxima.ToString();
-                lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString();
+                lblAmplitudMaxY.Text = senal.AmplitudMaxima.ToString("F");
+                lblAmplitudNegY.Text = "-" + senal.AmplitudMaxima.ToString("F");
 
             }
 
@@ -298,6 +298,11 @@ namespace GraficadorSenales
             {
                 txtTruncar.IsEnabled = false;
             }
+        }
+
+        private void cbTipoSenal_2_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
