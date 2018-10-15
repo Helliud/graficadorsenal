@@ -46,6 +46,7 @@ namespace GraficadorSenales
             double frecuenciaMuestreo = double.Parse(txtMuestreo.Text);
 
             Senal senal;
+            Senal segundaSenal;
 
             //Declarar las opciones para senalar en el vombo
             switch (cbTipoSenal.SelectedIndex)
@@ -72,11 +73,43 @@ namespace GraficadorSenales
                     break;
             }
 
+            //Para la segunda senal
+            switch (cbTipoSenal_Copy.SelectedIndex)
+            {
+
+                case 0:
+                    double amplitud = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion_Copy.Children[0])).txtAmplitud.Text);
+                    double fase = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion_Copy.Children[0])).txtFase.Text);
+                    double frecuencia = double.Parse(((ConfiguracionSenoidal)(stackPanelConfiguracion_Copy.Children[0])).txtFrecuencia.Text);
+
+                    segundaSenal = new SenalSenoidal(amplitud, fase, frecuencia);
+                    break;
+
+                case 1: segundaSenal = new Rampa(); break;
+                case 2: segundaSenal = new Signo(); break;
+                case 3: segundaSenal = new Parabolica(); break;
+                case 4:
+                    double alfa = double.Parse(((ConfiguracionExponencial)(stackPanelConfiguracion_Copy.Children[0])).txtAlfa.Text);
+
+                    segundaSenal = new SenalExponencial(alfa);
+                    break;
+                default:
+                    segundaSenal = null;
+                    break;
+            }
+
             senal.TiempoInicial = tiempoInicial;
             senal.TiempoFinal = tiempoFinal;
             senal.FrecuenciaMuestreo = frecuenciaMuestreo;
-
             senal.construirSenalDigital();
+
+
+            //segunda senal
+            segundaSenal.TiempoInicial = tiempoInicial;
+            segundaSenal.TiempoFinal = tiempoFinal;
+            segundaSenal.FrecuenciaMuestreo = frecuenciaMuestreo;
+            segundaSenal.construirSenalDigital();
+
 
             //Escalar
             double factorEscala = double.Parse(txtFactorEscalaAmplitud.Text);
@@ -272,6 +305,20 @@ namespace GraficadorSenales
             }
         }
 
+        private void chbDesplazamientoY_Checked2(object sender, RoutedEventArgs e)
+        {
+            if (chbDesplazamientoY2.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtDesplazamientoY2.IsEnabled = true;
+            }
+
+            else
+            {
+                txtDesplazamientoY2.IsEnabled = false;
+            }
+        }
+
         private void chbEscala_Checked(object sender, RoutedEventArgs e)
         {
             if (chbEscala.IsChecked == true)
@@ -285,6 +332,21 @@ namespace GraficadorSenales
                 txtFactorEscalaAmplitud.IsEnabled = false;
             }
         }
+
+        private void chbEscala_Checked2(object sender, RoutedEventArgs e)
+        {
+            if (chbEscala2.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtFactorEscalaAmplitud2.IsEnabled = true;
+            }
+
+            else
+            {
+                txtFactorEscalaAmplitud2.IsEnabled = false;
+            }
+        }
+
 
         private void chbTruncar_Checked(object sender, RoutedEventArgs e)
         {
@@ -300,9 +362,56 @@ namespace GraficadorSenales
             }
         }
 
+        private void chbTruncar_Checked2(object sender, RoutedEventArgs e)
+        {
+            if (chbTruncar2.IsChecked == true)
+            {
+                // If checked, do not allow items to be dragged onto the form.  
+                txtTruncar2.IsEnabled = true;
+            }
+
+            else
+            {
+                txtTruncar2.IsEnabled = false;
+            }
+        }
+
+
+
+
+
         private void cbTipoSenal_2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            stackPanelConfiguracion_Copy.Children.Clear();
+            switch (cbTipoSenal_Copy.SelectedIndex)
+            {
+                case 0:
+                    stackPanelConfiguracion_Copy.Children.Add(new ConfiguracionSenoidal());
+                    break;
 
+                case 1:
+                    break;
+
+                case 2:
+                    break;
+
+                case 3:
+                    break;
+
+                case 4:
+                    break;
+
+                case 5:
+                    stackPanelConfiguracion_Copy.Children.Add(new ConfiguracionExponencial());
+                    break;
+
+                    /*<ComboBoxItem Content="Senal Senoidal"/>
+            <ComboBoxItem Content="Senal Rampa"/>
+            <ComboBoxItem Content="Senal Signo"/>
+            <ComboBoxItem Content="Senal Parabolica"/>
+            <ComboBoxItem Content="Senal Exponencial"/>*/
+
+            }
         }
     }
 }
